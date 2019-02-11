@@ -1,0 +1,22 @@
+.page-template{
+    width:500px;
+    margin:5em auto 0;
+    padding-top:2rem;
+    background: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    @media(max-width: 768px){
+        width: calc(100% - 2rem);
+        margin-top:1rem;
+    }
+
+    h1{
+        margin: 0;
+        font-size: 4rem;
+        font-weight: 300;
+        text-align: center;
+    }
+    .content{
+        margin-top: 2rem;
+    }
+}
