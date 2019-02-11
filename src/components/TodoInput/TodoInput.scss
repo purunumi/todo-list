@@ -1,0 +1,40 @@
+@import 'utils';
+
+.todo-input{
+    display:flex;
+    padding: 1rem;
+    border:1px solid $oc-gray-2;
+    border-right:0;
+    border-left:0;
+    input{
+        flex:1;
+        border:none;
+        border-bottom:1px solid $oc-gray-4;
+        background:transparent;
+        outline:none;
+        font-size:1.1rem;
+        &:focus{
+            border-bottom:1px solid $oc-cyan-6;
+        }
+    }
+    .add-button{
+        display:flex;
+        width:5rem;
+        height:2rem;
+        margin-left:1rem;
+        border:1px solid $oc-green-7;
+        color:$oc-green-7;
+        font-size:1.1rem;
+        font-weight:500;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        &:hover{
+            background:$oc-green-7;
+            color:white;
+        }
+        &:active{
+            background:$oc-green-8;
+        }
+    }
+}
