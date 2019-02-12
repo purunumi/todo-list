@@ -8,8 +8,12 @@ class App extends Component {
         input:'',
         todos: [
             {id: 0, text: 'let\'s study react', done: true},
-            {id: 0, text: 'let\'s do component styling', done: true}
+            {id: 1, text: 'let\'s do component styling', done: true}
         ]
+    }
+
+    getId = () => {
+        return ++this.id;
     }
 
     handleChange = (e) => {
@@ -19,14 +23,52 @@ class App extends Component {
         });
     }
 
+    handleInsert = () => {
+        const {todos, input} = this.state;
+
+        const newTodo = {
+            text: input,
+            done: false,
+            id: this.getId()
+        };
+
+        this.setState({
+            todos: [...todos, newTodo],
+            input: ''
+        });
+    }
+
+    handleToggle = (id) => {
+        const {todos} = this.state;
+        // console.log(todos);
+        const index = todos.findIndex(todo => todo.id === id);
+
+        const toggled = {
+            ...todos[index],
+            done: !todos[index].done
+        }
+
+        this.setState({
+            todos: [
+                ...todos.slice(0, index),
+                toggled,
+                ...todos.slice(index + 1, todos.length)
+            ]
+        })
+    }
+
     render() {
         const {input, todos} = this.state;
-        const {handleChange} = this;
+        const {
+            handleChange,
+            handleInsert,
+            handleToggle
+        } = this;
 
         return (
             <PageTemplate>
-                <TodoInput onChange={handleChange} value={input} />
-                <TodoList todos={todos} />
+                <TodoInput onChange={handleChange} onInsert={handleInsert} value={input} />
+                <TodoList todos={todos} onToggle={handleToggle} />
             </PageTemplate>
         );
     }
